@@ -1,0 +1,213 @@
+$primary-color: hsl(223, 87%, 63%);
+$secondary-color: hsl(223, 100%, 88%);
+$error-color: hsl(354, 100%, 66%);
+$light-neutral: hsl(0, 0%, 59%);
+$dark-neutral: hsl(209, 33%, 12%);
+
+@mixin media-lg {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 20px;
+}
+
+body {
+  font-family: "Libre Franklin", sans-serif;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.main {
+  padding: 0 2rem;
+  width: 100%;
+  text-align: center;
+
+  .logo {
+    margin: 0 auto 3rem;
+    max-width: 300px;
+    padding-top: 3rem;
+  }
+
+  .hero-text {
+    margin-bottom: 1rem;
+
+    .heading {
+      font-size: 2rem;
+      font-weight: 300;
+      margin-bottom: 1rem;
+
+      .highlight {
+        font-size: 2rem;
+        font-weight: 700;
+      }
+    }
+  }
+
+  #form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 3rem;
+
+    @include media-lg {
+      flex-direction: row;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      width: 100%;
+      margin-bottom: 1rem;
+      position: relative;
+
+      @include media-lg {
+        width: 500px;
+        margin-right: 1rem;
+      }
+
+      input {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        border: 1px solid $secondary-color;
+        border-radius: 2rem;
+        outline: none;
+      }
+
+      input::placeholder {
+        color: $secondary-color;
+      }
+
+      .error-message {
+        display: none;
+        color: $error-color;
+        font-size: 0.8rem;
+        font-style: italic;
+        margin-top: 0.5rem;
+        animation: down1 0.5s ease-out;
+
+        @include media-lg {
+          position: absolute;
+          left: 30px;
+        }
+      }
+    }
+
+    .btn {
+      padding: 1rem;
+      border: none;
+      background: $primary-color;
+      color: white;
+      border-radius: 2rem;
+      outline: none;
+      height: 65px;
+      cursor: pointer;
+      transition: all 0.5s ease-out;
+      box-shadow: 0 3px 20px -10px $primary-color;
+
+      @include media-lg {
+        width: 200px;
+      }
+    }
+
+    .btn:hover {
+      background: #6993ff;
+      box-shadow: 0 5px 30px -5px $primary-color;
+    }
+  }
+
+  .hero-img {
+    width: 100%;
+    margin-bottom: 5rem;
+    animation: down2 1s ease-out;
+
+    @include media-lg {
+      margin-bottom: 3rem;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+footer {
+  text-align: center;
+  color: $light-neutral;
+
+  .social-icons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 200px;
+    margin: auto;
+    margin-bottom: 2rem;
+
+    .social-icon {
+      text-align: center;
+      height: 50px;
+      width: 50px;
+      padding: 0.6rem;
+      border: 1px solid $secondary-color;
+      border-radius: 50%;
+      transition: all 0.5s ease-out;
+
+      a {
+        color: $primary-color;
+      }
+    }
+
+    .social-icon:hover {
+      transform: translateY(-10px);
+      border: 1px solid $primary-color;
+    }
+  }
+
+  .copyright {
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .attribution {
+    font-size: 0.75rem;
+    text-align: center;
+    padding-bottom: 1rem;
+
+    a {
+      color: $primary-color;
+      font-size: 0.75rem;
+    }
+  }
+}
+
+@keyframes down1 {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes down2 {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
